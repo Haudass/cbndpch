@@ -19,3 +19,26 @@ Ce site a été conçu pour être :
 
 ## 🧱 Structure du projet
 
+
+---
+
+## 🧰 Technologies utilisées
+
+- **HTML5**  
+- **CSS3 (flexbox + grid)**  
+- **Unsplash** pour les images d’exemple  
+- **Google Fonts (Inter)**  
+- Compatible avec hébergements modernes : Netlify, Vercel, GitHub Pages
+
+---
+
+## 🖼️ Modifier les images
+
+Les images de la galerie se trouvent dans le dossier `/images`.  
+Pour les changer :
+
+1. Place tes photos (format `.jpg` ou `.png`) dans le dossier `images/`
+2. Nomme-les par exemple :
+3. Mets à jour le code HTML dans la section :
+```html
+<img src="images/etalage1.jpg" alt="Poissonnerie - étalage 1">
