@@ -1,545 +1,302 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Délice de France - Boulangerie Pâtisserie à Bonoua</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>La Cabane du pêcheur — LE PORT D'ASSE</title>
+  <meta name="description" content="La Cabane du pêcheur — Poissonnerie & Boucherie en Côte d'Ivoire. Vente en gros et au détail. Commandes : (+225) 07 10 90 11 15" />
+  <meta name="author" content="La Cabane du pêcheur" />
+  <meta property="og:title" content="La Cabane du pêcheur — LE PORT D'ASSE" />
+  <meta property="og:description" content="Poissonnerie & Boucherie — Vente en gros et au détail. Commandez par téléphone ou WhatsApp." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop" />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%231c7ea9'/%3E%3Cpath d='M30 55 C40 70 60 70 70 55' stroke='%23fff' stroke-width='6' fill='none' stroke-linecap='round'/%3E%3Ccircle cx='70' cy='35' r='8' fill='%23fff'/%3E%3C/svg%3E">
 
-        body {
-            font-family: 'Open Sans', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            overflow-x: hidden;
-        }
+  <style>
+    :root{
+      --blue:#0f6a8a; --soft-blue:#1987b0; --sand:#f4e9dd; --dark:#0b2a33; --muted:#6b7b86; --accent:#0b9bd7; --max-width:1100px;
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:linear-gradient(180deg,#fbfdff 0%,#f7fbff 100%);color:var(--dark);-webkit-font-smoothing:antialiased}
+    a{color:inherit}
+    .container{max-width:var(--max-width);margin:0 auto;padding:24px}
 
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 1rem 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
+    /* Header */
+    header{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;gap:14px;align-items:center}
+    .logo{width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--blue),var(--soft-blue));display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:20px}
+    .brand h1{margin:0;font-size:20px}
+    .brand p{margin:0;color:var(--muted);font-size:13px}
+    nav{display:flex;gap:14px}
+    nav a{font-weight:700;text-decoration:none;color:var(--dark);padding:8px;border-radius:8px}
+    .nav-cta{background:var(--blue);color:white;padding:8px 12px;border-radius:10px;text-decoration:none}
 
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
+    /* Hero */
+    .hero{position:relative;border-radius:14px;overflow:hidden;margin-top:12px}
+    .hero .bg{width:100%;height:420px;background-image:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1600&auto=format&fit=crop');background-size:cover;background-position:center}
+    .hero .overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,20,28,0.18),rgba(2,20,28,0.55));display:flex;align-items:center}
+    .hero .content{padding:40px;color:white;max-width:720px}
+    .hero h2{font-size:36px;margin:0 0 8px;letter-spacing:0.6px}
+    .hero p{margin:0 0 18px;color:rgba(230,246,255,0.95)}
+    .cta-row{display:flex;gap:12px}
+    .btn{background:var(--accent);color:white;padding:12px 18px;border-radius:10px;text-decoration:none;font-weight:800}
+    .btn-ghost{background:transparent;border:2px solid rgba(255,255,255,0.18);color:white;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:700}
 
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #8B4513;
-        }
+    /* Sections */
+    .section{padding:44px 0;border-bottom:1px solid #eef3f6}
+    .section h3{margin:0 0 8px;font-size:22px}
+    .muted{color:var(--muted)}
 
-        .logo span {
-            color: #D4A017;
-        }
+    /* Products grid */
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px;margin-top:18px}
+    .card{background:white;border-radius:12px;padding:12px;box-shadow:0 8px 22px rgba(11,42,51,0.06);display:flex;flex-direction:column;gap:10px}
+    .card img{width:100%;height:150px;object-fit:cover;border-radius:8px}
+    .card h4{margin:0;font-size:16px}
+    .card p{margin:0;color:var(--muted);font-size:13px}
 
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
+    /* Gallery */
+    .gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-top:16px}
+    .gallery-grid img{width:100%;height:180px;object-fit:cover;border-radius:10px;transition:transform .28s ease,box-shadow .28s ease;cursor:pointer}
+    .gallery-grid img:hover{transform:scale(1.03);box-shadow:0 12px 30px rgba(11,42,51,0.12)}
 
-        .nav-links a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
+    /* Contact */
+    .contact-panel{display:grid;grid-template-columns:1fr 360px;gap:20px}
+    .contact-card{background:linear-gradient(180deg,#fff,#fbfbff);padding:14px;border-radius:10px;box-shadow:0 8px 22px rgba(11,42,51,0.04)}
+    .contact-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+    .contact-list li{display:flex;gap:10px;align-items:center}
+    .pill{display:inline-block;background:var(--sand);padding:6px 10px;border-radius:8px;font-weight:700}
 
-        .nav-links a:hover {
-            color: #D4A017;
-        }
+    footer{padding:22px 0;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;align-items:center}
 
-        /* Header Hero */
-        .hero {
-            height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
-                        url('https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-4.0.3');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            padding: 0 2rem;
-        }
-
-        .hero-content h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-
-        .hero-content p {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background: #D4A017;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: 600;
-            transition: background 0.3s;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            background: #B8860B;
-        }
-
-        /* Sections générales */
-        section {
-            padding: 5rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            color: #8B4513;
-        }
-
-        /* Section À propos */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-
-        .about-image {
-            width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        /* Section Produits */
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .product-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .product-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .product-info {
-            padding: 1.5rem;
-        }
-
-        .product-info h3 {
-            color: #8B4513;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Section Horaires et Localisation */
-        .info-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: start;
-        }
-
-        .hours {
-            background: #F8F8F8;
-            padding: 2rem;
-            border-radius: 10px;
-        }
-
-        .hours h3 {
-            color: #8B4513;
-            margin-bottom: 1rem;
-        }
-
-        .hours-list {
-            list-style: none;
-        }
-
-        .hours-list li {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #eee;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .map-container {
-            height: 300px;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .map-container iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        /* Section Contact */
-        .contact-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            background: #D4A017;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
-        }
-
-        .btn-whatsapp {
-            background: #25D366;
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 5px;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-weight: 600;
-            transition: background 0.3s;
-        }
-
-        .btn-whatsapp:hover {
-            background: #128C7E;
-        }
-
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-family: inherit;
-        }
-
-        .form-group textarea {
-            height: 120px;
-            resize: vertical;
-        }
-
-        /* Footer */
-        footer {
-            background: #8B4513;
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 2rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-
-            .about-content,
-            .info-container,
-            .contact-container {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .products-grid {
-                grid-template-columns: 1fr;
-            }
-
-            section {
-                padding: 3rem 1rem;
-            }
-        }
-    </style>
+    /* Responsive */
+    @media (max-width:900px){
+      .contact-panel{grid-template-columns:1fr}
+      .hero .bg{height:320px}
+    }
+    @media (max-width:560px){
+      header{flex-direction:column;align-items:flex-start;gap:12px}
+      nav{display:none}
+      .hero .bg{height:260px}
+    }
+  </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <div class="logo">Délice <span>de France</span></div>
-            <ul class="nav-links">
-                <li><a href="#accueil">Accueil</a></li>
-                <li><a href="#apropos">À propos</a></li>
-                <li><a href="#produits">Produits</a></li>
-                <li><a href="#horaires">Horaires</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden>LC</div>
+        <div>
+          <h1>La Cabane du pêcheur</h1>
+          <p class="muted">LE PORT D'ASSE • Poissonnerie & Boucherie</p>
         </div>
-    </nav>
+      </div>
 
-    <!-- Header Hero -->
-    <section id="accueil" class="hero">
-        <div class="hero-content">
-            <h1>Délice de France</h1>
-            <p>Boulangerie-Pâtisserie - Bonoua</p>
-            <a href="#produits" class="btn">Découvrir nos délices</a>
+      <nav>
+        <a href="#produits">Nos Produits</a>
+        <a href="#galerie">Galerie</a>
+        <a href="#contact">Contact</a>
+        <a class="nav-cta" href="tel:+2250710901115">Commander</a>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="bg" aria-hidden></div>
+      <div class="overlay">
+        <div class="content container">
+          <h2>Poissons frais • Viandes sélectionnées</h2>
+          <p>Vente en gros et au détail — Retrait sur place ou préparation de commandes pour restaurateurs. Livraison possible selon disponibilité.</p>
+          <div class="cta-row">
+            <a class="btn" href="https://wa.me/225710901115" target="_blank" rel="noopener">Commander sur WhatsApp</a>
+            <a class="btn-ghost" href="#contact">Nous contacter</a>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- Section À propos -->
-    <section id="apropos" class="about">
-        <h2 class="section-title">Le savoir-faire français à Bonoua</h2>
-        <div class="about-content">
-            <div class="about-text">
-                <p>Délice de France vous accueille au cœur de Bonoua pour une expérience gustative authentique. Notre boulangerie-pâtisserie perpétue la tradition française avec passion et excellence.</p>
-                <p>Chaque jour, nos artisans préparent avec soin des pains croustillants, des viennoiseries dorées et des pâtisseries raffinées, en utilisant des ingrédients de qualité sélectionnés avec rigueur.</p>
-                <p>Venez découvrir l'authenticité du goût et la chaleur de notre accueil dans un cadre convivial où la passion du bon pain se transmet de génération en génération.</p>
-            </div>
-            <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?ixlib=rb-4.0.3" alt="Intérieur de la boulangerie" class="about-image">
+    <!-- PRODUITS -->
+    <section id="produits" class="section">
+      <div class="container">
+        <h3>Nos produits</h3>
+        <p class="muted">Poissons, fruits de mer et viandes — vente en gros et au détail.</p>
+
+        <div style="display:flex;gap:12px;margin-top:14px;flex-wrap:wrap;align-items:center">
+          <div class="pill">Poissons & fruits de mer</div>
+          <div class="pill" style="background:#fff;border:1px dashed #e6eef2">Mulets • Capitaine • Thon blanc • Thon frais • Sépia • Sardine bleu (Machère) • Pageot • Carpe blanche • Maquereau • Espadon</div>
         </div>
+
+        <div class="grid">
+          <!-- Products (images can be local files in /images/) -->
+          <article class="card">
+            <img src="images/mulets.jpg" alt="Mulets" onerror="this.src='https://images.unsplash.com/photo-1536305030014-0f6c2a4701b9?q=80&w=1200&auto=format&fit=crop'" />
+            <h4>Mulets</h4>
+            <p>Poisson frais — idéal pour grillades et préparations locales.</p>
+          </article>
+
+          <article class="card">
+            <img src="images/capitaine.jpg" alt="Capitaine" onerror="this.src='https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop'" />
+            <h4>Capitaine</h4>
+            <p>Chair ferme, excellente tenue à la cuisson.</p>
+          </article>
+
+          <article class="card">
+            <img src="images/thon.jpg" alt="Thon" onerror="this.src='https://images.unsplash.com/photo-1541558619250-6e4e1fb8c6a7?q=80&w=1200&auto=format&fit=crop'" />
+            <h4>Thon (blanc / frais)</h4>
+            <p>Vendu en filet ou entier — qualité contrôlée.</p>
+          </article>
+
+          <article class="card">
+            <img src="images/sepia.jpg" alt="Sépia" onerror="this.src='https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1200&auto=format&fit=crop'" />
+            <h4>Sépia</h4>
+            <p>Frais, parfait pour plats locaux et spécialités de la mer.</p>
+          </article>
+
+          <article class="card">
+            <img src="images/sardine.jpg" alt="Sardine" onerror="this.src='https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=1200&auto=format&fit=crop'" />
+            <h4>Sardine bleu (Machère)</h4>
+            <p>Petit poisson, goût prononcé — économique et savoureux.</p>
+          </article>
+
+          <article class="card">
+            <img src="images/pageot.jpg" alt="Pageot" onerror="this.src='https://images.unsplash.com/photo-1604908177543-41d1d0fb4c7c?q=80&w=1200&auto=format&fit=crop'" />
+            <h4>Pageot</h4>
+            <p>Poisson fin, apprécié pour son goût délicat.</p>
+          </article>
+
+          <!-- Meat examples -->
+          <article class="card">
+            <img src="images/cotelette.jpg" alt="Côtelette" onerror="this.src='https://images.unsplash.com/photo-1604908177073-f7d7b5c6d7c6?q=80&w=1200&auto=format&fit=crop'" />
+            <h4>Côtelette</h4>
+            <p>Découpe de qualité pour grillades et plats familiaux.</p>
+          </article>
+
+          <article class="card">
+            <img src="images/palette.jpg" alt="Palette de boeuf" onerror="this.src='https://images.unsplash.com/photo-1551782450-a2132b4ba21d?q=80&w=1200&auto=format&fit=crop'" />
+            <h4>Palette de bœuf</h4>
+            <p>Idéale pour ragoûts et plats mijotés.</p>
+          </article>
+
+          <article class="card">
+            <img src="images/poulet.jpg" alt="Poulet entier" onerror="this.src='https://images.unsplash.com/photo-1603073504976-99f9d8a3a2b1?q=80&w=1200&auto=format&fit=crop'" />
+            <h4>Poulet entier / Cuisse</h4>
+            <p>Volaille fraîche disponible entière ou par morceaux.</p>
+          </article>
+
+          <article class="card">
+            <img src="images/rognon.jpg" alt="Rognon" onerror="this.src='https://images.unsplash.com/photo-1598511728073-9b3b8a3e6c2a?q=80&w=1200&auto=format&fit=crop'" />
+            <h4>Rognon</h4>
+            <p>Abats sélectionnés, préparés et prêts à cuisiner.</p>
+          </article>
+
+          <article class="card">
+            <img src="images/others.jpg" alt="Autres produits" onerror="this.src='https://images.unsplash.com/photo-1562967916-eb82221dfb36?q=80&w=1200&auto=format&fit=crop'" />
+            <h4>Et bien d'autres...</h4>
+            <p>Contactez-nous pour les commandes en gros et demandes spéciales.</p>
+          </article>
+        </div>
+      </div>
     </section>
 
-    <!-- Section Produits -->
-    <section id="produits" class="products">
-        <h2 class="section-title">Nos délices</h2>
-        <div class="products-grid">
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-4.0.3" alt="Pains" class="product-image">
-                <div class="product-info">
-                    <h3>Pains Artisanaux</h3>
-                    <p>Baguettes tradition, pains de campagne, pains spéciaux préparés quotidiennement</p>
-                </div>
-            </div>
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1555507036-ab794f27d2e9?ixlib=rb-4.0.3" alt="Viennoiseries" class="product-image">
-                <div class="product-info">
-                    <h3>Viennoiseries</h3>
-                    <p>Croissants, pains au chocolat, brioches et autres douceurs du matin</p>
-                </div>
-            </div>
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3" alt="Pâtisseries" class="product-image">
-                <div class="product-info">
-                    <h3>Pâtisseries</h3>
-                    <p>Éclairs, tartes, mille-feuilles et gâteaux d'anniversaire sur commande</p>
-                </div>
-            </div>
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1551782450-17144efb9c50?ixlib=rb-4.0.3" alt="Sandwiches" class="product-image">
-                <div class="product-info">
-                    <h3>Sandwiches & Salades</h3>
-                    <p>Préparés sur place avec des produits frais pour vos déjeuners</p>
-                </div>
-            </div>
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-4.0.3" alt="Gâteaux" class="product-image">
-                <div class="product-info">
-                    <h3>Gâteaux d'Exception</h3>
-                    <p>Créations originales pour vos événements spéciaux et célébrations</p>
-                </div>
-            </div>
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3" alt="Boissons" class="product-image">
-                <div class="product-info">
-                    <h3>Boissons & Café</h3>
-                    <p>Café, thé, jus de fruits et boissons fraîches pour accompagner vos pauses</p>
-                </div>
-            </div>
+    <!-- GALERIE -->
+    <section id="galerie" class="section">
+      <div class="container">
+        <h3>Galerie</h3>
+        <p class="muted">Photos de notre étalage et de nos produits. Cliquez pour agrandir.</p>
+
+        <div class="gallery-grid" id="gallery">
+          <img src="images/etalage1.jpg" alt="Étalage 1" data-full="images/etalage1.jpg" />
+          <img src="images/etalage2.jpg" alt="Étalage 2" data-full="images/etalage2.jpg" />
+          <img src="images/etalage3.jpg" alt="Étalage 3" data-full="images/etalage3.jpg" />
+          <img src="images/etalage4.jpg" alt="Étalage 4" data-full="images/etalage4.jpg" />
+          <img src="images/etalage5.jpg" alt="Étalage 5" data-full="images/etalage5.jpg" />
+          <img src="images/etalage6.jpg" alt="Étalage 6" data-full="images/etalage6.jpg" />
         </div>
+      </div>
     </section>
 
-    <!-- Section Horaires et Localisation -->
-    <section id="horaires" class="info">
-        <h2 class="section-title">Horaires & Localisation</h2>
-        <div class="info-container">
-            <div class="hours">
-                <h3><i class="fas fa-clock"></i> Nos horaires d'ouverture</h3>
-                <ul class="hours-list">
-                    <li><span>Lundi - Vendredi</span> <span>6h00 - 20h00</span></li>
-                    <li><span>Samedi</span> <span>6h00 - 20h00</span></li>
-                    <li><span>Dimanche</span> <span>6h00 - 14h00</span></li>
-                    <li><span>Jours fériés</span> <span>7h00 - 13h00</span></li>
-                </ul>
-                <p style="margin-top: 1rem; font-style: italic; color: #666;">
-                    * Horaires susceptibles de changer pendant les fêtes
-                </p>
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <div class="container">
+        <h3>Contact & commandes</h3>
+        <p class="muted">Appelez, envoyez un WhatsApp ou retrouvez-nous sur TikTok.</p>
+
+        <div class="contact-panel" style="margin-top:12px">
+          <div>
+            <div class="contact-card">
+              <h4 style="margin-top:0">Nos coordonnées</h4>
+              <ul class="contact-list">
+                <li><strong>Tél:</strong>&nbsp;<a href="tel:+2252734771924">(+225) 27 34 77 19 24</a></li>
+                <li><strong>Cel / WhatsApp:</strong>&nbsp;<a href="tel:+2250710901115">(+225) 07 10 90 11 15</a>&nbsp;•&nbsp;<a href="https://wa.me/225710901115" target="_blank" rel="noopener">Envoyer WhatsApp</a></li>
+                <li><strong>TikTok:</strong>&nbsp;<a href="https://www.tiktok.com/@lamaisonbio" target="_blank" rel="noopener">@La maison bio</a></li>
+                <li><strong>Localisation:</strong>&nbsp;Côte d'Ivoire — LE PORT D'ASSE</li>
+              </ul>
             </div>
-            <div class="map-container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3978.123456789012!2d-3.123456!3d5.123456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNcKwMDcnMjguNCJOIDPCsDA3JzEyLjMiVw!5e0!3m2!1sfr!2sci!4v1234567890123" allowfullscreen="" loading="lazy"></iframe>
+
+            <div style="margin-top:14px" class="contact-card">
+              <h4 style="margin-top:0">Horaires</h4>
+              <p class="muted" style="margin:6px 0 0">Lundi - Samedi: 06:00 - 18:00<br/>Dimanche: Fermé (ou selon marché)</p>
             </div>
+          </div>
+
+          <aside class="contact-card">
+            <h4 style="margin-top:0">Services</h4>
+            <p class="muted">Vente au détail & en gros • Préparation de commandes pour restaurants • Retrait sur place • Emballage hygiénique</p>
+
+            <div style="margin-top:12px;display:flex;gap:8px">
+              <a class="btn" href="tel:+2250710901115">Appeler</a>
+              <a class="btn-ghost" href="https://wa.me/225710901115" target="_blank" rel="noopener">WhatsApp</a>
+            </div>
+
+            <div style="margin-top:12px;font-size:13px;color:var(--muted)">Entreprise ivoirienne — Vente en gros et au détail</div>
+          </aside>
         </div>
+
+        <!-- Map (optionnel) -->
+        <div style="margin-top:18px">
+          <!-- Replace src with actual Google Maps iframe if you have an address -->
+          <iframe title="Localisation" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3977.0!2d-!3d5.0" style="width:100%;height:260px;border:0;border-radius:8px" allowfullscreen loading="lazy"></iframe>
+        </div>
+
+      </div>
     </section>
 
-    <!-- Section Contact -->
-    <section id="contact" class="contact">
-        <h2 class="section-title">Contactez-nous</h2>
-        <div class="contact-container">
-            <div class="contact-info">
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <div>
-                        <h3>Adresse</h3>
-                        <p>Rue principale, Bonoua<br>Côte d'Ivoire</p>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-phone"></i>
-                    </div>
-                    <div>
-                        <h3>Téléphone</h3>
-                        <p>+225 XX XX XX XX</p>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fab fa-whatsapp"></i>
-                    </div>
-                    <div>
-                        <h3>Commande WhatsApp</h3>
-                        <a href="https://wa.me/225XXXXXXXXX" class="btn-whatsapp">
-                            <i class="fab fa-whatsapp"></i> Commander maintenant
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <form class="contact-form" id="contactForm">
-                <div class="form-group">
-                    <label for="name">Nom complet</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" required></textarea>
-                </div>
-                <button type="submit" class="btn">Envoyer le message</button>
-            </form>
-        </div>
-    </section>
-
-    <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Délice de France - Boulangerie Pâtisserie Bonoua. Tous droits réservés.</p>
-        <p style="margin-top: 0.5rem; opacity: 0.8;">Le savoir-faire français au cœur de la Côte d'Ivoire</p>
+      <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:12px">
+        <div>© <strong>La Cabane du pêcheur</strong> — LE PORT D'ASSE • Vente en gros et au détail • Côte d'Ivoire</div>
+        <div class="muted">Site prêt à déployer • Conception: Agbodjalou Eliezer</div>
+      </div>
     </footer>
+  </div>
 
-    <script>
-        // Smooth scroll pour la navigation
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
+  <!-- Lightbox simple pour la galerie -->
+  <div id="lightbox" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.8);align-items:center;justify-content:center;padding:20px;z-index:2500">
+    <img id="lightbox-img" src="" alt="" style="max-width:96%;max-height:92%;border-radius:8px;box-shadow:0 20px 50px rgba(0,0,0,0.6)" />
+  </div>
+
+  <script>
+    // Lightbox for gallery images
+    (function(){
+      const gallery = document.getElementById('gallery');
+      const lightbox = document.getElementById('lightbox');
+      const lbImg = document.getElementById('lightbox-img');
+      if(!gallery) return;
+      gallery.addEventListener('click', (e)=>{
+        const img = e.target.closest('img');
+        if(!img) return;
+        const src = img.dataset.full || img.src;
+        lbImg.src = src;
+        lightbox.style.display = 'flex';
+      });
+      lightbox.addEventListener('click', ()=>{ lightbox.style.display='none'; lbImg.src=''; });
+
+      // Improve image fallbacks: if local image missing, keep remote onerror
+      document.querySelectorAll('img').forEach(img=>{
+        img.addEventListener('error', ()=>{
+          // noop - onerror attributes already provide fallback where needed
         });
-
-        // Formulaire de contact simple
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Merci pour votre message ! Nous vous contacterons très rapidement.');
-            this.reset();
-        });
-
-        // Animation au scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = 1;
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observer les éléments à animer
-        document.querySelectorAll('.product-card, .about-content, .info-container, .contact-container').forEach(el => {
-            el.style.opacity = 0;
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(el);
-        });
-    </script>
+      });
+    })();
+  </script>
 </body>
 </html>
